@@ -1,238 +1,73 @@
+/* RESET CSS */
 
-        /* =========================================
-           Variables y Reset
-           ========================================= */
-           :root {
-            --primary-color: #3b82f6; /* Azul moderno */
-            --primary-hover: #2563eb;
-            --danger-color: #ef4444;  /* Rojo para quitar/agotado */
-            --danger-hover: #dc2626;
-            --bg-color: #f3f4f6;
-            --surface-color: #ffffff;
-            --text-main: #1f2937;
-            --text-muted: #6b7280;
-            --border-color: #e5e7eb;
-            --radius: 8px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.5;
-        }
-
-        /* Contenedor principal que simula el root de React */
-        #root {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-bottom: 2rem;
-        }
-
-        /* =========================================
-           Navbar (Barra de Navegación)
-           ========================================= */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: var(--surface-color);
-            padding: 1rem 2rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            margin-bottom: 1rem;
-            border-radius: 0 0 var(--radius) var(--radius);
-        }
-
-        .navbar-logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            letter-spacing: -0.5px;
-        }
-
-        .navbar-search {
-            flex: 0 1 400px;
-        }
-
-        .navbar-search input {
-            width: 100%;
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .navbar-search input:focus {
-            border-color: var(--primary-color);
-        }
-
-        .navbar-cart {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        .cart-icon {
-            font-size: 1.25rem;
-        }
-
-        .cart-counter {
-            background-color: var(--danger-color);
-            color: white;
-            padding: 0.1rem 0.5rem;
-            border-radius: 99px;
-            font-size: 0.85rem;
-        }
-
-        /* =========================================
-           Barra de Filtros
-           ========================================= */
-        .filter-bar {
-            background-color: var(--surface-color);
-            padding: 1rem 2rem;
-            border-radius: var(--radius);
-            margin-bottom: 2rem;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-        }
-
-        .filter-label {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            font-weight: 500;
-            color: var(--text-muted);
-        }
-
-        /* =========================================
-           Cuadrícula de Productos (Grid)
-           ========================================= */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 2rem;
-            padding: 0 1rem;
-        }
-
-        /* =========================================
-           Tarjeta de Producto (Card)
-           ========================================= */
-        .card {
-            background-color: var(--surface-color);
-            border-radius: var(--radius);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s, box-shadow 0.2s;
-            position: relative;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-        }
-
-        .card-image {
-            height: 180px;
-            background-color: #e2e8f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--text-muted);
-            font-size: 0.875rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .card-body {
-            padding: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .card-title {
-            font-size: 1.125rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-main);
-        }
-
-        .card-price {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--text-main);
-            margin-bottom: 1.25rem;
-        }
-
-        .card-actions {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: auto; /* Empuja los botones al fondo */
-        }
-
-        .btn {
-            flex: 1;
-            padding: 0.5rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: background-color 0.2s;
-        }
-
-        .btn-add {
-            background-color: var(--primary-color);
-            color: white;
-        }
-
-        .btn-add:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .btn-remove {
-            background-color: transparent;
-            color: var(--danger-color);
-            border: 1px solid var(--danger-color);
-        }
-
-        .btn-remove:hover {
-            background-color: var(--danger-color);
-            color: white;
-        }
-
-        /* =========================================
-           Regla Visual: Sin Stock
-           ========================================= */
-        .sin-stock {
-            opacity: 0.5;
-            filter: grayscale(100%);
-            pointer-events: none; /* Opcional: evita clics en tarjetas agotadas */
-        }
-
-        .sin-stock .card-title {
-            color: var(--danger-color);
-        }
-
-        .badge-agotado {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: var(--danger-color);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 99px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 10;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+  }
+  
+  header,
+  footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 1rem;
+  }
+  
+  section {
+    margin-bottom: 2rem;
+  }
+  
+  button {
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  
+  input {
+    padding: 0.5rem;
+  }
+  
+  .contenedor-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .card {
+    width: 220px;
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .permanente {
+    border-left: 8px solid green;
+  }
+  
+  .temporal {
+    border-left: 8px solid orange;
+  }

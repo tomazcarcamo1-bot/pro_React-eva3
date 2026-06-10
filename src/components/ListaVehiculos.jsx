@@ -1,21 +1,18 @@
-import CardVehiculo from "./CardVehiculo";
+import CardVehiculos from "./CardVehiculos";
 
-function ListaVehiculos() {
-  const vehiculos = [
-    { id: 1, patente: "ABCD12", marca: "Toyota" },
-    { id: 2, patente: "EFGH34", marca: "Hyundai" }
-  ];
-
+function ListaVehiculos({ vehiculos }) {
   return (
     <section>
       <h2>Vehículos Registrados</h2>
 
-      {vehiculos.map((vehiculo) => (
-        <CardVehiculo
-          key={vehiculo.id}
-          vehiculo={vehiculo}
-        />
-      ))}
+      <div className="contenedor-cards">
+        {vehiculos.map((vehiculo) => (
+          <CardVehiculos
+            key={vehiculo.patente}
+            vehiculo={vehiculo}
+          />
+        ))}
+      </div>
     </section>
   );
 }

@@ -1,10 +1,25 @@
-function CardVehiculo({ vehiculo }) {
+function CardVehiculos({ vehiculo }) {
     return (
-      <article>
+      <article
+        className={`card ${
+          vehiculo.permanente
+            ? "permanente"
+            : "temporal"
+        }`}
+      >
         <h3>{vehiculo.marca}</h3>
-        <p>Patente: {vehiculo.patente}</p>
+  
+        <p>
+          <strong>Patente:</strong> {vehiculo.patente}
+        </p>
+  
+        <p>
+          {vehiculo.permanente
+            ? "Vehículo Permanente"
+            : "Vehículo Temporal"}
+        </p>
       </article>
     );
   }
   
-  export default CardVehiculo;
+  export default CardVehiculos;
